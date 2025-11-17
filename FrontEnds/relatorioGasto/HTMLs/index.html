@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/FrontEnds/relatorioGasto/CSS/style.css">
+  <title>Relatório de Gastos</title>
+</head>
+<body>
+  <div id="container">
+    <div class="imagem">
+      <img src="/FrontEnds/relatorioGasto/IMAGES/logoDignitec.png" alt="Logo">
+    </div>
+    <form id="form" action="https://api.sheetmonkey.io/form/sHxb9A624oEryTYBSLnrFQ" method="post">
+      <div class="inputs">
+        <label for="categoria">Categoria do Gasto:</label><br>
+        <input id="categoria" type="text" name="Categoria" placeholder="Ex: Alimentação"><br><br>
+
+        <label for="valor">Valor do Gasto:</label><br>
+        <input id="valor" type="text" name="Valor" placeholder="R$ 0,00"><br><br>
+
+        <label for="data">Data:</label><br>
+        <input id="data" type="text" name="Data" placeholder="__/__/__"><br><br>
+
+        <button id="registrar" type="submit">Registrar</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/FrontEnds/relatorioGasto/SCRIPTs/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+/* Remove espaçamentos padrões */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+
+/* Container principal — divide em 2 partes */
+#container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Metade esquerda — imagem */
+.imagem {
+  flex: 1; /* ocupa metade */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f18407; /* cor de fundo opcional */
+}
+
+.imagem img {
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Metade direita — formulário */
+form {
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.inputs {
+  width: 70%;
+  max-width: 400px;
+}
+
+
+label  {
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0a0a00;
+}
+
+
+
+
+
+
+

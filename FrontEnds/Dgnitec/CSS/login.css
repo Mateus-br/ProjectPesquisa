@@ -1,0 +1,108 @@
+.section {
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    margin-top: 20px;
+    left: 5%;
+    position: relative;
+    display: flex;
+} 
+
+header img {
+
+    margin-top: 1px;
+    width: 90px;
+    left: 10%;
+}
+
+header h1 {
+    top: 15px;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+    display: flex;
+    padding: 4px;
+    margin: 30px;
+}
+
+.cabecalho{
+    text-align: center;
+    font-family: serif;
+    font-style: italic;
+    background: linear-gradient(90deg, #d16805, #fab115, yellow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item{
+    padding: 30px;
+    align-items: center;
+}
+
+.redes-sociais{
+    display: flex;
+}
+
+.inputss{
+    width: 260px;
+    height: 30px;
+    border-radius: 50px;
+    border: solid 2px rgb(238, 152, 24) ;
+}
+
+.labels{
+    color: black;
+    position: absolute;
+    left: 60px;
+    font-size: 20px;
+}
+
+.section{
+    width: 370px;
+    height: 400px;
+    border-radius: 50px;
+    border: 1px solid #ebe9e8;
+    box-shadow: 1px 3px 2px;
+    color: #070707;
+
+}
+
+p {
+    display: flex;
+    padding-left: 35px;
+    color: blue;
+}
+
+.botoes{
+    justify-content: center;
+    display: flex;
+    gap: 30px;
+}
+
+.botao{
+    font-size: 18px;
+    padding: 6px;
+    border-radius: 20px;
+    width: 110px;
+}
+
+.botao1{
+    background-color: white;
+    border: 1px solid black;    
+}
+
+.botao2{
+    background: linear-gradient(90deg, #c9670c, #fab115);
+    border: none;    
+    color: white;
+}
