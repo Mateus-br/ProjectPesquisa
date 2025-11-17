@@ -1,0 +1,67 @@
+// Importa os pacotes
+const express = require('express');
+const mysql = require('mysql2');
+const cors = require('cors');
+const multer = require('multer'); // <--- novo
+const path = require('path');
+
+// Cria o app Express
+const app = express();
+const port = 3000;
+app.use(cors());
+app.use(express.json());
+
+// Habilita a pasta "uploads" para acesso público
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Configura o Multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // pasta onde as imagens serão salvas
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // nome único
+  }
+});
+const upload = multer({ storage });
+
+// Configura a conexão com o banco de dados MySQL
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'mateus',
+  database: 'dignitec'
+});
+
+db.connect((err) => {
+  if (err) console.error('Erro ao conectar ao MySQL:', err);
+  else console.log('Conectado ao MySQL com sucesso!');
+});
+
+// Rota POST com upload da imagem
+app.post('/anuncios', upload.single('imagemCapa'), (req, res) => {
+  const { nomeProjeto, categoria, descricao, localizacao, contato } = req.body;
+  const imagemCapa = req.file ? req.file.filename : null;
+
+  const sql = 'INSERT INTO form_anuncio (nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa) VALUES (?, ?, ?, ?, ?, ?)';
+  const values = [nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa];
+
+  db.query(sql, values, (err) => {
+    if (err) {
+      console.error('Erro ao inserir:', err);
+      res.status(500).json({ message: 'Erro ao cadastrar anúncio.' });
+    } else {
+      res.status(201).json({ message: 'Anúncio cadastrado com sucesso!' });
+    }
+  });
+});
+
+// Listar anúncios
+app.get('/anuncios', (req, res) => {
+  db.query('SELECT * FROM form_anuncio', (err, results) => {
+    if (err) res.status(500).json({ message: 'Erro ao buscar anúncios.' });
+    else res.json(results);
+  });
+});
+
+app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`));
