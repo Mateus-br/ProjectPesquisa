@@ -7,7 +7,7 @@ const path = require('path');
 
 // Cria o app Express
 const app = express();
-const port = 3000;
+const port = 23758;
 app.use(cors());
 app.use(express.json());
 
@@ -27,10 +27,10 @@ const upload = multer({ storage });
 
 // Configura a conexão com o banco de dados MySQL
 const db = mysql.createConnection({
-  host: 'localhost',
+  host: 'shuttle.proxy.rlwy.net',
   user: 'root',
-  password: 'mateus',
-  database: 'dignitec'
+  password: 'EGoFVEgAQuapZCbEOQcbCBDXkwsPKAoL',
+  database: 'railway'
 });
 
 db.connect((err) => {
