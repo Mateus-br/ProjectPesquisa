@@ -7,7 +7,7 @@ const path = require('path');
 
 // Cria o app Express
 const app = express();
-const port = 23758;
+ port: process.env.MYSQLPORT
 app.use(cors());
 app.use(express.json());
 
@@ -31,7 +31,7 @@ const db = mysql.createConnection({
   user: process.env.MYSQLUSER,
   password: process.env.MYSQLPASSWORD,
   database: process.env.MYSQLDATABASE,
-  port: process.env.MYSQLPORT
+ 
 });
 
 db.connect((err) => {
