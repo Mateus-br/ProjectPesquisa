@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 // Habilita a pasta "uploads" para acesso público
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('projectpesquisa-production.up.railway.app/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Configura o Multer
 const storage = multer.diskStorage({
@@ -44,7 +44,7 @@ db.connect((err) => {
 });
 
 // Rota POST com upload da imagem
-app.post('/anuncios', upload.single('imagemCapa'), (req, res) => {
+app.post('projectpesquisa-production.up.railway.app/anuncios', upload.single('imagemCapa'), (req, res) => {
   const { nomeProjeto, categoria, descricao, localizacao, contato } = req.body;
   const imagemCapa = req.file ? req.file.filename : null;
 
@@ -62,11 +62,12 @@ app.post('/anuncios', upload.single('imagemCapa'), (req, res) => {
 });
 
 // Listar anúncios
-app.get('/anuncios', (req, res) => {
+app.get('projectpesquisa-production.up.railway.app/anuncios', (req, res) => {
   db.query('SELECT * FROM form_anuncio', (err, results) => {
     if (err) res.status(500).json({ message: 'Erro ao buscar anúncios.' });
     else res.json(results);
   });
 });
 
-app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`));
+app.listen(port, () => console.log(`Servidor rodando em projectpesquisa-production.up.railway.app:${port}`));
+ /*app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`)); */
