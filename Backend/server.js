@@ -7,7 +7,7 @@ const path = require('path');
 
 // Cria o app Express
 const app = express();
-const port = 3000;
+const port = 23758;
 app.use(cors());
 app.use(express.json());
 
@@ -27,10 +27,11 @@ const upload = multer({ storage });
 
 // Configura a conexão com o banco de dados MySQL
 const db = mysql.createConnection({
-  host: 'shuttle.proxy.rlwy.net',
-  user: 'root',
-  password: 'EGoFVEgAQuapZCbEOQcbCBDXkwsPKAoL',
-  database: 'railway'
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT
 });
 
 db.connect((err) => {
