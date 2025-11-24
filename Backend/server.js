@@ -4,10 +4,13 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const multer = require('multer'); // <--- novo
 const path = require('path');
+require("dotenv").config();
+
 
 // Cria o app Express
 const app = express();
- const port = process.env.MYSQLPORT
+const port = process.env.PORT || 3000
+
 app.use(cors());
 app.use(express.json());
 
