@@ -2,7 +2,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
-const multer = require('multer'); // <--- novo
+const multer = require('multer'); // <--- novo 
 const path = require('path');
 require("dotenv").config();
 
@@ -15,10 +15,10 @@ app.use(cors());
 app.use(express.json());
 
 // Habilita a pasta "uploads" para acesso público
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+/*app.use('/uploads', express.static(path.join(__dirname, 'uploads')));*/
 
 // Configura o Multer
-const storage = multer.diskStorage({
+/*const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/'); // pasta onde as imagens serão salvas
   },
@@ -26,7 +26,7 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname)); // nome único
   }
 });
-const upload = multer({ storage });
+const upload = multer({ storage }); */
 
 // Configura a conexão com o banco de dados MySQL
 const db = mysql.createConnection({
@@ -46,10 +46,10 @@ db.connect((err) => {
 // Rota POST com upload da imagem
 app.post('/anuncios', upload.single('imagemCapa'), (req, res) => {
   const { nomeProjeto, categoria, descricao, localizacao, contato } = req.body;
-  const imagemCapa = req.file ? req.file.filename : null;
+  /*const imagemCapa = req.file ? req.file.filename : null; */
 
-  const sql = 'INSERT INTO form_anuncio (nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa) VALUES (?, ?, ?, ?, ?, ?)';
-  const values = [nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa];
+  const sql = 'INSERT INTO form_anuncio (nomeProjeto, categoria, descricao, localizacao, contato) VALUES (?, ?, ?, ?, ?)';
+  const values = [nomeProjeto, categoria, descricao, localizacao, contato];
 
   db.query(sql, values, (err) => {
     if (err) {
