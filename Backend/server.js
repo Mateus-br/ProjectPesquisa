@@ -45,9 +45,10 @@ db.connect((err) => {
 
 // Rota POST com upload da imagem
 app.post('/anuncios', (req, res) => {
+  console.log("Entrei  na função")
   const { nomeProjeto, categoria, descricao, localizacao, contato } = req.body;
   /*const imagemCapa = req.file ? req.file.filename : null; */
-
+  console.log("Salvei o body")
   const sql = 'INSERT INTO form_anuncio (nomeProjeto, categoria, descricao, localizacao, contato) VALUES (?, ?, ?, ?, ?)';
   const values = [nomeProjeto, categoria, descricao, localizacao, contato];
 
