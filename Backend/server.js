@@ -44,7 +44,7 @@ db.connect((err) => {
 });
 
 // Rota POST com upload da imagem
-app.post('/anuncios', upload.single('imagemCapa'), (req, res) => {
+app.post('/anuncios', (req, res) => {
   const { nomeProjeto, categoria, descricao, localizacao, contato } = req.body;
   /*const imagemCapa = req.file ? req.file.filename : null; */
 
