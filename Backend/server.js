@@ -29,13 +29,18 @@ app.use(express.json());
 const upload = multer({ storage }); */
 
 // Configura a conexão com o banco de dados MySQL
+// Node.js example
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 const db = mysql.createConnection({
   host: process.env.MYSQLHOST,
   user: process.env.MYSQLUSER,
   password: process.env.MYSQLPASSWORD,
   database: process.env.MYSQLDATABASE,
-  port: process.env.MYSQLPORT
- 
+  port: PORT
 });
 
 db.connect((err) => {
