@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData(form); // envia todos os campos + arquivo
 
     try {
-      const response = await fetch('https://projectpesquisa-production.up.railway.app/anuncios', {
+      const response = await fetch('http://localhost:3000/anuncios', {
         method: 'POST',
         body: formData // não coloca headers aqui
       });
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function pegarDados() {
   try {
-    const resposta = await fetch("https://projectpesquisa-production.up.railway.app/anuncios");
+    const resposta = await fetch("http://localhost:3000/anuncios");
     const conteudo = await resposta.json();
     const container = document.querySelector("#lista-anuncios");
 

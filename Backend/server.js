@@ -15,10 +15,10 @@ app.use(cors());
 app.use(express.json());
 
 // Habilita a pasta "uploads" para acesso público
-/*app.use('/uploads', express.static(path.join(__dirname, 'uploads')));*/
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Configura o Multer
-/*const storage = multer.diskStorage({
+const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/'); // pasta onde as imagens serão salvas
   },
@@ -26,18 +26,18 @@ app.use(express.json());
     cb(null, Date.now() + path.extname(file.originalname)); // nome único
   }
 });
-const upload = multer({ storage }); */
+const upload = multer({ storage }); 
 
 // Configura a conexão com o banco de dados MySQL
 // Node.js example
 
 
 const db = mysql.createConnection({
-  host: process.env.MYSQLHOST,
-  user: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE,
-  port: process.env.PORT
+  host: "localhost",
+  user: "root",
+  password: "mateus",
+  database: "dignitec",
+  port: 3306
 });
 
 db.connect((err) => {
@@ -46,13 +46,13 @@ db.connect((err) => {
 });
 
 // Rota POST com upload da imagem
-app.post('/anuncios', (req, res) => {
+app.post('/anuncios', upload.single('imagemCapa'), (req, res) => {
   console.log("Entrei  na função")
   const { nomeProjeto, categoria, descricao, localizacao, contato } = req.body;
-  /*const imagemCapa = req.file ? req.file.filename : null; */
+  const imagemCapa = req.file ? req.file.filename : null; 
   console.log("Salvei o body")
-  const sql = 'INSERT INTO form_anuncio (nomeProjeto, categoria, descricao, localizacao, contato) VALUES (?, ?, ?, ?, ?)';
-  const values = [nomeProjeto, categoria, descricao, localizacao, contato];
+  const sql = 'INSERT INTO form_anuncio (nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa) VALUES (?, ?, ?, ?, ?, ?)';
+  const values = [nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa];
 
   db.query(sql, values, (err) => {
     if (err) {
@@ -72,5 +72,5 @@ app.get('/anuncios', (req, res) => {
   });
 });
 
-app.listen(port, () => console.log(`Servidor rodando em projectpesquisa-production.up.railway.app:${port}`));
+app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`));
  /*app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`)); */
