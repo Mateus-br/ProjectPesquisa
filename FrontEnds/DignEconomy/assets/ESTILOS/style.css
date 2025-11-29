@@ -75,7 +75,7 @@ p {
     justify-items: center;
     padding: 15px;
     height: 90px;
-    width: 30%;
+    width: 33%;
    /* background-color: #5c9888; */
   /* background-color: rgb(252, 176, 36); */
     background-color: white;
@@ -94,6 +94,7 @@ p {
     position: relative;
     float: right;
     top: -59px;
+    
 }
 
 .btn-entra {

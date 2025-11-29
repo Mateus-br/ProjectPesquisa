@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precificaçaõ inteligente</title>
+    <link rel="stylesheet" href="/FrontEnds/PrecoAuto.ofc/assets/stylos/style.css">
+</head>
+<body>
+    <section>
+
+    </section>
+
+
+        <div id="input-box">
+            <div class="input-field">
+                <label for="CustoFixo">Custos Fixos</label>
+                <input type="number" id="CustoFixo">
+            </div>
+
+            <div class="input-field">
+                <label for="qtdServicoMes">Qtd. produto/serviço por mês: </label>
+                <input type="number" id="qtdServicoMes">
+            </div>
+
+            <div class="input-field">
+                <label for="CustoVariavel">Custos Variavel por produto/serviço</label>
+                <input type="number" id="CustoVariavel">
+            </div>
+
+            <div class="input-field">
+                <label for="margemLucro">Margem de lucro desejada (%) </label>
+                <input type="number" id="margemLucro" placeholder="Ex: 50 ">
+            </div>
+
+            <div class="result">
+                <h4>Resultado</h4>
+                <span id="PrecoInteligente">
+                    R$ 0,00
+                </span>
+            </div>
+
+            <button id="calculate" onclick="calcular()">Calcular</button>
+            <button id="registrar">Registrar</button>
+        </div>
+    </main>
+
+    <script type="text/javascript" src="/assets/script.js"></script>
+</body>
+</html>

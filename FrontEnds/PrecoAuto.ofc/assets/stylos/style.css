@@ -1,0 +1,156 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* antes era flex-start */
+    background: #ffff;
+    padding: 20px;
+    min-height: 100vh; /* garante centralização vertical */
+
+}
+
+#container {
+    display: flex;
+    background: #ffffff;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin: 0 auto; /* garante centralização horizontal */
+}
+
+/* =======================
+   LADO ESQUERDO
+========================== */
+#calculator {
+    width: 40%;
+    background: linear-gradient(135deg, hsl(46, 83%, 54%), hsl(34, 85%, 52%));
+    color: #fff;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#calculator h2 {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* =======================
+   LADO DIREITO (FORM)
+========================== */
+#input-box {
+    width: 60%;
+    padding: 40px 30px;
+}
+
+.input-field {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 15px;
+    margin-bottom: 5px;
+    color: #0a0b0c;
+}
+
+input {
+    padding: 10px;
+    border: 2px solid #e68d07;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    width: 250px;
+}
+
+input:focus {
+    border-color: #e0d318;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.3);
+}
+
+/* RESULTADO */
+.result {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 245px;
+}
+
+.result h4 {
+    color: #475569;
+    margin-bottom: 5px;
+}
+
+.result span {
+    font-size: 22px;
+    font-weight: bold;
+    color: #d18a06;
+}
+
+/* BOTÕES */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+#calculate {
+    background: #f19a18;
+    color: white;
+    width: 279px;
+}
+#calculate:hover {
+    background: #d19e11;
+}
+
+#registrar {
+    background: #e2e8f0;
+    color: #1e293b;
+    width: 279px;
+}
+#registrar:hover {
+    background: #cbd5e1;
+}
+
+/* =======================
+   RESPONSIVO
+========================== */
+@media (max-width: 850px) {
+    #container {
+        flex-direction: column;
+        max-width: 500px;
+    }
+
+    #calculator {
+        width: 100%;
+        padding: 30px;
+    }
+
+    #input-box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 450px) {
+    #calculator h2 {
+        font-size: 22px;
+    }
+
+    button {
+}
+}
